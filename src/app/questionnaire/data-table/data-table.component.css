@@ -1,0 +1,59 @@
+.answer-view {
+  width: 90%;
+  margin: auto;
+}
+table {
+  width: 100%;
+}
+th,
+td {
+  white-space: pre;
+  padding: 0.5rem !important;
+  text-align: center !important;
+}
+th:first-child {
+  padding-left: 1.5rem !important;
+}
+
+.parent-table {
+  width: 100%;
+  margin: auto;
+  overflow: auto;
+}
+.mat-form-field {
+  font-size: 14px;
+  width: 50%;
+  display: block;
+  margin: auto;
+  text-align: center;
+}
+::ng-deep .mat-focused .mat-form-field-label {
+  color: #8417a5 !important;
+}
+
+::ng-deep.mat-form-field-underline {
+  color: #8417a5 !important;
+}
+
+::ng-deep.mat-form-field-ripple {
+  color: #8417a5 !important;
+}
+
+.answer-view {
+  margin-top: 6rem;
+}
+
+mat-spinner {
+  position: sticky;
+  top: 100%;
+  margin: auto;
+}
+.mat-body-2 {
+  text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .mat-h1 {
+    font-size: 16px;
+  }
+}

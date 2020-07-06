@@ -1,0 +1,113 @@
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<form
+  (submit)="onSubmit(questionnaire)"
+  #questionnaire="ngForm"
+  *ngIf="!isLoading"
+>
+  <mat-card
+    *ngFor="let question of questions; let i = index"
+    [id]="question.identifier"
+  >
+    <h4>{{ question.headline }}</h4>
+    <mat-radio-group
+      class="radio-group"
+      *ngIf="question.question_type === 'multiple-choice'"
+      [(ngModel)]="answers[i]"
+      name="{{ question.identifier }}"
+      [required]="question.required"
+      #rg="ngModel"
+    >
+      <mat-radio-button
+        class="radio-button"
+        *ngFor="let choice of question.choices"
+        [value]="choice.value"
+      >
+        {{ choice.label }}
+      </mat-radio-button>
+    </mat-radio-group>
+
+    <mat-form-field
+      class="datepicker"
+      *ngIf="
+        question.question_type === 'text' &&
+        question.identifier.includes('date')
+      "
+    >
+      <mat-label>Choose a date</mat-label>
+      <input
+        matInput
+        [matDatepicker]="datePicker"
+        [(ngModel)]="answers[i]"
+        name="{{ question.identifier }}"
+        [required]="question.required"
+        #datepicker="ngModel"
+      />
+      <mat-datepicker-toggle
+        [for]="datePicker"
+        matSuffix
+      ></mat-datepicker-toggle>
+      <mat-datepicker #datePicker [disabled]="false"></mat-datepicker>
+      <mat-error *ngIf="datepicker.invalid"
+        >This question is required</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field
+      *ngIf="question.question_type === 'text' && question.multiline === 'true'"
+    >
+      <textarea
+        matInput
+        rows="4"
+        [(ngModel)]="answers[i]"
+        name="{{ question.identifier }}"
+        [required]="question.required"
+        #textarea="ngModel"
+      ></textarea>
+      <mat-error *ngIf="textarea.invalid">This question is required</mat-error>
+    </mat-form-field>
+    <mat-form-field
+      *ngIf="
+        question.question_type === 'text' &&
+        question.multiline === 'false' &&
+        !question.identifier.includes('date')
+      "
+    >
+      <input
+        matInput
+        [(ngModel)]="answers[i]"
+        name="{{ question.identifier }}"
+        [required]="question.required"
+        #input="ngModel"
+      />
+      <mat-error *ngIf="input.invalid">This question is required</mat-error>
+    </mat-form-field>
+
+    <button
+      *ngIf="answers[i] !== undefined"
+      class="btn-reset"
+      mat-button
+      color="accent"
+      (click)="clear(i)"
+    >
+      {{
+        question.question_type === "multiple-choice" ||
+        question.identifier.includes("date")
+          ? "Clear Selection"
+          : "Clear text"
+      }}
+    </button>
+  </mat-card>
+  <button
+    class="btn"
+    color="warn"
+    mat-raised-button
+    color="primary"
+    type="submit"
+    [disabled]="!questionnaire.valid"
+  >
+    {{
+      questionnaire.valid
+        ? "Submit Answers"
+        : "Answer all the required questions"
+    }}
+  </button>
+</form>

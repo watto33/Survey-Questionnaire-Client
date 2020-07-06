@@ -1,0 +1,43 @@
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+.radio-button {
+  margin: 10px;
+}
+mat-card {
+  margin: 10px 0;
+  overflow: auto;
+}
+
+mat-form-field,
+textarea {
+  width: 100%;
+}
+
+.datepicker {
+  width: 30%;
+}
+
+.btn-reset {
+  float: right;
+}
+
+.center {
+  background-color: red;
+  color: white;
+}
+button:disabled {
+  background-color: #ff00001f !important;
+  color: rgba(255, 0, 0, 0.466) !important;
+}
+mat-spinner {
+  position: sticky;
+  top: 100%;
+  margin: auto;
+}
+.btn {
+  width: 100%;
+  margin: 1rem 0;
+}

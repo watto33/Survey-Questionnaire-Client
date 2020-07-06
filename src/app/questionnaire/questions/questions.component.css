@@ -1,0 +1,28 @@
+.container {
+  width: 60%;
+  margin: auto;
+  margin-top: 5rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    width: 90%;
+  }
+}
+mat-spinner {
+  position: sticky;
+  top: 100%;
+  margin: auto;
+}
+@media only screen and (max-width: 600px) {
+  mat-spinner {
+    position: absolute;
+    top: 10%;
+    left: 35%;
+    margin: auto;
+  }
+}
+
+mat-card {
+  overflow: auto;
+}

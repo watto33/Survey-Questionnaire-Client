@@ -1,0 +1,12 @@
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<div class="container" *ngIf="!isLoading">
+  <mat-card>
+    <mat-card-title>{{ questionnaire?.name }}</mat-card-title>
+    <br />
+    <mat-card-subtitle>{{ questionnaire?.description }}</mat-card-subtitle>
+  </mat-card>
+  <br />
+  <app-question></app-question>
+</div>
+
+<!-- <app-data-table></app-data-table> -->
